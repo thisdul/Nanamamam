@@ -4,4 +4,4 @@
 <script>
     AOS.init();
 </script>
-<script src="{{ asset('script/navbar-scroll.js') }}"></script>
+<script src="{{ asset('/script/navbar-scroll.js') }}"></script>
