@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Transaction;
-
+use App\Models\TransactionDetail;
+use App\Models\User;
 use Illuminate\Support\Facades\Facade;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -85,6 +86,7 @@ class TransactionController extends Controller
 
                 // return redirect()->route('product-gallery.index');
 
+
     }
 
     /**
@@ -95,7 +97,13 @@ class TransactionController extends Controller
      */
     public function show($id)
     {
-        //
+        $transaction = Transaction::findOrFail($id);
+        // $item = TransactionDetail::findOrFail($id);
+        $user = User::findOrFail($transaction->user_id);
+
+
+        return view('pages.admin.transaction.show', compact('transaction','user'));
+
     }
 
     /**

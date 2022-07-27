@@ -13,17 +13,11 @@
               <img src="images/success.svg" alt="" class="mb-4" />
               <h2>Transaction Processed!</h2>
               <p>
-                Pesanan selesai!, Silahkan lakukan pembayaran melalui Nomor Rekening yang tersedia.
-                Lihat Nomor Rekening Nanamamam <a href="{{ route('transaction') }}"></a> dan unggah buktinya.
-                Terima Kasih!
+                Pesanan selesai! Segera lakukan pembayaran dan unggah buktinya.
               </p>
               <div>
-                <a href="dashboard.html" class="btn btn-success w-50 mt-4">
-                  My Dashboard
-                </a>
-                <a href="index.html" class="btn btn-signup w-50 mt-2">
-                  Go To Shopping
-                </a>
+                <a href="{{ route('pembayaran') }}" class="btn btn-success w-50 mt-4">Bayar</a>
+                <a href="{{ route('home') }}" class="btn btn-signup w-50 mt-2">Home</a>
               </div>
             </div>
           </div>

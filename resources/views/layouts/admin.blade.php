@@ -103,17 +103,22 @@
                       role="button"
                       data-toggle="dropdown"
                     >
-                      Hi, Fadhilah
+                      Hi, {{ Auth::user()->name }}
                     </a>
                     <div class="dropdown-menu">
-                      <a href="/" class="dropdown-item">Logout</a>
+                      {{-- <a href="{{ route('logout') }}" class="dropdown-item">Logout</a> --}}
+                      <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                            class="dropdown-item">Logout</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                     </div>
                   </li>
                 </ul>
 
                 <ul class="navbar-nav d-block d-lg-none">
                   <li class="nav-item">
-                    <a href="#" class="nav-link"> Hi, Fadhilah </a>
+                    <a href="#" class="nav-link"> Hi, {{ Auth::user()->name }} </a>
                   </li>
                   <li class="nav-item">
                     <a href="#" class="nav-link d-inline-block"> Cart </a>

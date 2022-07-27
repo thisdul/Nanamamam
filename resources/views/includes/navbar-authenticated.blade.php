@@ -36,7 +36,7 @@
                 role="button"
                 data-toggle="dropdown"
               >
-                Hi, Fadhilah
+                Hi, {{ Auth::user()->name }}
               </a>
               <div class="dropdown-menu">
                 <a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard</a>
@@ -61,7 +61,7 @@
             {{-- Mobile menu --}}
           <ul class="navbar-nav d-block d-lg-none">
             <li class="nav-item">
-              <a href="#" class="nav-link"> Hi, Fadhilah </a>
+              <a href="#" class="nav-link"> Hi, {{ Auth::user()->name }} </a>
             </li>
             <li class="nav-item">
               <a href="{{ route('cart') }}" class="nav-link d-inline-block"> cart </a>

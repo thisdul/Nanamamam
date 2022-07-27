@@ -33,8 +33,9 @@ Route::post('/details/{id?}', [App\Http\Controllers\DetailController::class, 'ad
 
 
 Route::get('/success', [App\Http\Controllers\CartController::class, 'success'])->name('success');
+// Route::get('/register/success', [App\Http\Controllers\Auth\RegisterController::class, 'success'])->name('register-success');
+Route::get('/register/success', [App\Http\Controllers\CartController::class, 'register_success'])->name('register-success');
 
-Route::get('/register/success', [App\Http\Controllers\Auth\RegisterController::class, 'success'])->name('register-success');
 
 
 
@@ -44,7 +45,17 @@ Route::group(['middleware' => ['auth']], function(){
     Route::delete('/cart/{id?}', [App\Http\Controllers\CartController::class, 'delete'])->name('cart-delete');
 
     Route::post('/checkout', [App\Http\Controllers\CheckoutController::class, 'process'])->name('checkout');
-    Route::post('/checkout/callback', [App\Http\Controllers\CheckoutController::class, 'callback'])->name('midtrans-callback');
+    // Route::post('/checkout/pembayaran{id?}', [App\Http\Controllers\CheckoutController::class, 'pembayaran'])->name('pembayaran');
+
+
+    // Route::post('/checkout/callback', [App\Http\Controllers\CheckoutController::class, 'callback'])->name('midtrans-callback');
+    Route::post('/checkout/finish', [App\Http\Controllers\CheckoutController::class, 'finish'])->name('midtrans-finish');
+    Route::post('/checkout/unfinish', [App\Http\Controllers\CheckoutController::class, 'unfinish'])->name('midtrans-unfinish');
+    Route::post('/checkout/error', [App\Http\Controllers\CheckoutController::class, 'error'])->name('midtrans-error');
+
+
+
+
 
 
 
@@ -53,8 +64,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/dashboard/transactions', [App\Http\Controllers\DashboardTransactionController::class, 'index'])->name('dashboard-transaction');
     Route::get('/dashboard/transactions/{id?}', [App\Http\Controllers\DashboardTransactionController::class, 'details'])
     ->name('dashboard-transaction-details');
-    Route::post('/dashboard/transactions/{id?}', [App\Http\Controllers\DashboardTransactionController::class, 'upload'])
-    ->name('dashboard-transaction-upload');
+    // Route::post('/dashboard/transactions/{id?}', [App\Http\Controllers\DashboardTransactionController::class, 'upload'])
+    // ->name('dashboard-transaction-upload');
 
 
     Route::get('/dashboard/account', [App\Http\Controllers\DashboardAccountController::class, 'index'])->name('dashboard-account');

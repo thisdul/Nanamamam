@@ -31,71 +31,91 @@
                             </div>
 
                             <div class="col-12 col-md-8">
-                            <div class="row">
-                                <div class="col-12 col-md-6">
-                                <div class="product-title">Customer Name</div>
-                                <div class="product-subtitle">
-                                    {{ $transaction->transaction->user->name }}
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <div class="product-title">Customer Name</div>
+                                        <div class="product-subtitle">
+                                            {{ $transaction->transaction->user->name }}
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="product-title">Product Name</div>
+                                        <div class="product-subtitle">{{ $transaction->product->name }}</div>
+                                        </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="product-title">
+                                            Date of Transaction
+                                        </div>
+                                        <div class="product-subtitle">{{ $transaction->created_at }}</div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="product-title">Status Transaksi</div>
+                                        <div class="product-subtitle text-danger">
+                                            {{ $transaction->transaction->transaction_status }}
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="product-title">Total Amount</div>
+                                        <div class="product-subtitle">Rp {{ number_format($transaction->transaction->total_price) }}</div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="product-title">Mobile</div>
+                                        <div class="product-subtitle">{{ $transaction->transaction->user->phone_number }}</div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="product-title">Akan dikirim pada</div>
+                                        <div class="product-subtitle">{{ $transaction->transaction->shipping_date}}</div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="product-title">Kontak</div>
+                                        <div class="product-subtitle"><a href="https://wa.me/895356310521">Contact me!</a></div>
+                                    </div>
                                 </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                <div class="product-title">Product Name</div>
-                                <div class="product-subtitle">{{ $transaction->product->name }}</div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                <div class="product-title">
-                                    Date of Transaction
-                                </div>
-                                <div class="product-subtitle">{{ $transaction->created_at }}</div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                <div class="product-title">Status Transaksi</div>
-                                <div class="product-subtitle text-danger">
-                                    {{ $transaction->transaction->transaction_status }}
-                                </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                <div class="product-title">Total Amount</div>
-                                <div class="product-subtitle">Rp {{ number_format($transaction->transaction->total_price) }}</div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                <div class="product-title">Mobile</div>
-                                <div class="product-subtitle">{{ $transaction->transaction->user->phone_number }}</div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                <div class="product-title">Akan dikirim pada</div>
-                                <div class="product-subtitle">{{ $transaction->transaction->shipping_date}}</div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                <div class="product-title">Kontak</div>
-                                <div class="product-subtitle"><a href="https://wa.me/895356310521">Contact me!</a></div>
-                                </div>
-                            </div>
                             </div>
                         </div>
+
                         {{-- <form action="{{ route('dashboard-transaction-upload', $transaction->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-                            <div class="col-12 mt-4">
-                                <h5>No. Rekening</h5>
-                                <div class="product-subtitle"> BCA: 12345678 / BNI: 12345678</div>
-                            </div>
-                            <div class="col-12 col-md-3">
-                                <label>Send here!</label>
-                                <input type="file" name="foto_bukti" class="form-control" required>
-                            </div>
-                            <div class="col-12 col-md-2">
-                                <button
-                                type="submit"
-                                class="btn btn-success btn-block mt-4">
-                                    Kirim Bukti
-                                </button>
-                            </div>
 
+                            <div class="col-12 mt-5">
+                                <h5>
+                                    Info Pembayaran
+                                </h5>
+
+
+                                <div class="row">
+                                    <div class="col-12 col-md-4">
+                                        <img
+                                            src="{{ asset('images/logobank.jpg') }}"
+                                        />
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="product-title">BRI - A/N Fadhilah Nur Amaliah</div>
+                                        <div class="product-subtitle"> 013901192320501</div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="product-title">BNI - A/N Fadhilah Nur Amaliah</div>
+                                        <div class="product-subtitle"> 0573321352</div>
+                                    </div>
+
+                                    <div class="col-12 col-md-4">
+                                        <div class="product-title">Kirim Bukti Transfer di Sini</div>
+                                        <input type="file" name="gambar_bukti" id="gambar_bukti" class="form-control">
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <button
+                                        type="submit"
+                                        class="btn btn-success btn-block mt-4">
+                                            Kirim
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </form> --}}
+                        </form>
+                        <a href="{{ url('assets/bukti', $transaction->gambar_bukti)}}" style="color:black">Lihat Bukti</a> --}}
                     </div>
-
                 </div>
                 </div>
             </div>

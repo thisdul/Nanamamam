@@ -8,7 +8,7 @@
         <div class="container">
           <div class="row align-items-center justify-content-center row-login">
             <div class="col-lg-4">
-              <h2>Pesan Tumpeng dan catering lebih mudah</h2>
+              <h2>Pesan Tumpeng dan Katering Lebih Mudah!</h2>
 
               <form method="POST" action="{{ route('login') }}" class="mt-3">
                 {{-- csrf untuk method post harus pa --}}

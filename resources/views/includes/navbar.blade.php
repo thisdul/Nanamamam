@@ -75,10 +75,10 @@
             {{-- Mobile menu --}}
           <ul class="navbar-nav d-block d-lg-none">
             <li class="nav-item">
-              <a href="#" class="nav-link"> Hi, Fadhilah </a>
+              <a href="#" class="nav-link"> Hi, {{ Auth::user()->name }} </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link d-inline-block"> cart </a>
+              <a href="{{ route('cart') }}" class="nav-link d-inline-block"> cart </a>
             </li>
           </ul>
           @endauth

@@ -40,4 +40,9 @@ class CartController extends Controller
     {
         return view('pages.success');
     }
+
+    public function register_success()
+    {
+        return view('auth.success');
+    }
 }

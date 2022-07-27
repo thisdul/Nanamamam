@@ -70,6 +70,7 @@
             <div class="row">
               <div class="col-lg-8">
                 <h1>{{ $product->name }}</h1>
+                <div>Banyak: {{ $product->portion}} Porsi</div>
                 <div class="price">Rp {{ number_format($product->price) }}</div>
                 {{-- <div class="portion">{{ number_format($product->portion) }}</div> --}}
 
@@ -99,7 +100,7 @@
                     <form action="{{ route('detail-add', $product->id) }}"  method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label>Porsi Makanan</label>
+                            <label>Jumlah</label>
                             @php
                                 $option = $product->price
                             @endphp

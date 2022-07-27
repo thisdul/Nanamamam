@@ -30,8 +30,7 @@ data-aos="fade-up"
                                         <th>Status</th>
                                         {{-- <th>Dibuat</th> --}}
                                         <th>Tanggal Pengiriman</th>
-                                        <th>Alamat1</th>
-                                        <th>Alamat2</th>
+                                        <th>Alamat</th>
                                         <th>Aksi</th>
                                     </tr>
 
@@ -69,7 +68,7 @@ data-aos="fade-up"
                 // { data: 'created_at', name: 'created_at'},
                 { data: 'shipping_date', name: 'shipping_date'},
                 { data: 'user.address_one', name: 'user.address_one'},
-                { data: 'user.address_two', name: 'user.address_two'},
+                // { data: 'gambar_bukti', name: 'gambar_bukti'},
 
 
                 {

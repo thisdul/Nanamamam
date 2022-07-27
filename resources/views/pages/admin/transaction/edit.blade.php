@@ -29,6 +29,12 @@ data-aos="fade-up"
                 @endif
                 <div class="card">
                     <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a href="{{ url('assets/bukti', $item->gambar_bukti)}}" style="color:black">Lihat Bukti</a>
+                            </div>
+
+                        </div>
                         <form action="{{ route('transaction.update', $item->id) }}" method="POST" enctype="multipart/form-data">
                             @method('PUT')
                             @csrf

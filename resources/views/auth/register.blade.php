@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row align-items-center justify-content-center row-login">
             <div class="col-lg-4">
-                <h2>Pesan Tumpeng dan catering lebih mudah</h2>
+                <h2>Daftar di sini untuk Jelajahi Nanamamam</h2>
 
                 <form method="POST" action="{{ route('register') }}" class="mt-4">
                     @csrf
