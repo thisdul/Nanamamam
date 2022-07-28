@@ -105,11 +105,13 @@
                                 $option = $product->price
                             @endphp
 
-                            @if ($option >= 350000)
+                            <input type="number" name="portion" min="1" class="form-control" required>
+
+                            {{-- @if ($option >= 350000)
                                 <input type="number" name="portion" min="1" class="form-control" required>
                             @else
                                 <input type="number" name="portion" min="10" class="form-control" required>
-                            @endif
+                            @endif --}}
 
                         </div>
 
