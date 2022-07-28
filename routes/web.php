@@ -49,9 +49,9 @@ Route::group(['middleware' => ['auth']], function(){
 
 
     // Route::post('/checkout/callback', [App\Http\Controllers\CheckoutController::class, 'callback'])->name('midtrans-callback');
-    Route::post('/checkout/finish', [App\Http\Controllers\CheckoutController::class, 'finish'])->name('midtrans-finish');
-    Route::post('/checkout/unfinish', [App\Http\Controllers\CheckoutController::class, 'unfinish'])->name('midtrans-unfinish');
-    Route::post('/checkout/error', [App\Http\Controllers\CheckoutController::class, 'error'])->name('midtrans-error');
+    Route::get('/checkout/finish', [App\Http\Controllers\CheckoutController::class, 'finish'])->name('midtrans-finish');
+    Route::get('/checkout/unfinish', [App\Http\Controllers\CheckoutController::class, 'unfinish'])->name('midtrans-unfinish');
+    Route::get('/checkout/error', [App\Http\Controllers\CheckoutController::class, 'error'])->name('midtrans-error');
 
 
 
