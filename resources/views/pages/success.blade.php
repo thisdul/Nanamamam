@@ -11,12 +11,12 @@
           <div class="row align-items-center row-login justify-content-center">
             <div class="col-lg-6 text-center">
               <img src="images/success.svg" alt="" class="mb-4" />
-              <h2>Transaction Processed!</h2>
+              <h2>Transaction Success!</h2>
               <p>
-                Pesanan selesai! Segera lakukan pembayaran dan unggah buktinya.
+                Pesanan selesai! Silahkan cek riwayat transaksi anda.
               </p>
               <div>
-                <a href="{{ route('pembayaran') }}" class="btn btn-success w-50 mt-4">Bayar</a>
+                <a href="{{ route('pembayaran') }}" class="btn btn-success w-50 mt-4">Cek Riwayat Transaksi</a>
                 <a href="{{ route('home') }}" class="btn btn-signup w-50 mt-2">Home</a>
               </div>
             </div>

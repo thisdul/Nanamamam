@@ -181,4 +181,11 @@ class CheckoutController extends Controller
 
 
     }
+
+    public function finish()
+    {
+        // return redirect ()->route('success');
+        // return view('pages.success');
+        return view('pages.success');
+    }
 }
