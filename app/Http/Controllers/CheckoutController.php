@@ -147,7 +147,7 @@ class CheckoutController extends Controller
         $order_id= $notification -> order_id;
 
         // cari transaksi berdasarkan ID
-        $transaction = Transaction::findOrFail($order_id);
+        $transaction = Transaction::where('code', $order_id)->first();
 
         // Handle Notifikasistatus
         if($status =='capture') {
@@ -161,19 +161,19 @@ class CheckoutController extends Controller
         }
 
         elseif($status == 'settlement'){
-            $transaction->status = 'SUCCESS';
+            $transaction->transaction_status = 'SUCCESS';
         }
         elseif($status == 'pending'){
-            $transaction->status = 'PENDING';
+            $transaction->transaction_status = 'PENDING';
         }
         elseif($status == 'deny'){
-            $transaction->status ='CANCELLED';
+            $transaction->transaction_status ='CANCELLED';
         }
         elseif($status == 'expire'){
-            $transaction->status ='CANCELLED';
+            $transaction->transaction_status ='CANCELLED';
         }
         elseif($status == 'cancel'){
-            $transaction->status = 'CANCELLED';
+            $transaction->transaction_status = 'CANCELLED';
         }
 
         // Simpan transaksi
