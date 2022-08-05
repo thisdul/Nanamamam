@@ -27,10 +27,10 @@ data-aos="fade-up"
                                         <th>ID</th>
                                         <th>Nama</th>
                                         <th>Harga</th>
+                                        {{-- <th>product</th> --}}
                                         <th>Status</th>
-                                        {{-- <th>Dibuat</th> --}}
-                                        <th>Tanggal Pengiriman</th>
-                                        <th>Alamat</th>
+                                        <th>Akan dikirim pada</th>
+                                        {{-- <th>Alamat</th> --}}
                                         <th>Aksi</th>
                                     </tr>
 
@@ -64,10 +64,10 @@ data-aos="fade-up"
                 { data: 'id', name: 'id'},
                 { data: 'user.name', name: 'user.name'},
                 { data: 'total_price', name: 'total_price'},
+                // { data: 'transactiondetail.product.name', name: 'transactioindetail.product.name'},
                 { data: 'transaction_status', name: 'transaction_status'},
                 // { data: 'created_at', name: 'created_at'},
                 { data: 'shipping_date', name: 'shipping_date'},
-                { data: 'user.address_one', name: 'user.address_one'},
                 // { data: 'gambar_bukti', name: 'gambar_bukti'},
 
 

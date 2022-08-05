@@ -14,9 +14,10 @@
               <h2>Transaction Success!</h2>
               <p>
                 Pesanan selesai! Silahkan cek riwayat transaksi anda.
+                Pesanan akan diproses setelah anda melakukan pembayaran.
               </p>
               <div>
-                <a href="{{ route('pembayaran') }}" class="btn btn-success w-50 mt-4">Cek Riwayat Transaksi</a>
+                <a href="{{ route('dashboard') }}" class="btn btn-success w-50 mt-4">Cek Riwayat Transaksi</a>
                 <a href="{{ route('home') }}" class="btn btn-signup w-50 mt-2">Home</a>
               </div>
             </div>

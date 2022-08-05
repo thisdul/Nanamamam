@@ -18,11 +18,18 @@ class DashboardTransactionController extends Controller
 
         //                 })->get();
 
-        $buyTransactions = TransactionDetail::with(['transaction.user','product.galleries'])
-                        ->whereHas('transaction', function($transaction){
-                            $transaction->where('users_id', Auth::user()->id);
+        // Transaction::with('transactiondetail', 'user');
 
-                        })->get();
+        $buyTransactions = Transaction::with(['transactiondetail','user'])
+                        ->where('users_id', Auth::user()->id)->get();
+
+
+
+        // $buyTransactions = TransactionDetail::with(['transaction.user','product.galleries'])
+        //                 ->whereHas('transaction', function($transaction){
+        //                     $transaction->where('users_id', Auth::user()->id);
+
+        //                 })->get();
 
                         // dd($buyTransactions);
 
@@ -34,15 +41,22 @@ class DashboardTransactionController extends Controller
     public function details(Request $request, $id)
     {
 
+         $transaction = TransactionDetail::with(['transaction.user','product.galleries'])
+                     ->where('transactions_id', $id)->get();
 
-        $transaction = TransactionDetail::with(['transaction.user','product.galleries'])
-                            ->findOrFail($id);
-                            // dd($transaction);
-        return view('pages.dashboard-transactions-details',[
-            'transaction'=>$transaction
-
-
+        return view('pages.dashboard-transactions-details', [
+            'transaction' => $transaction
         ]);
+
+
+        // $transaction = TransactionDetail::with(['transaction.user','product.galleries'])
+        //                     ->findOrFail($id);
+        //                     // dd($transaction);
+        // return view('pages.dashboard-transactions-details',[
+        //     'transaction'=>$transaction
+
+
+        // ]);
     }
 
     // upload gambar bukti tf

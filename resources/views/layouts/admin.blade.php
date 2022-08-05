@@ -63,9 +63,15 @@
             >
               Users
             </a>
-            <a href="index.html" class="list-group-item list-group-item-action">
+            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                            class="list-group-item list-group-item-action">Logout</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+            {{-- <a href="index.html" class="list-group-item list-group-item-action">
+
               Log Out
-            </a>
+            </a> --}}
           </div>
         </div>
 

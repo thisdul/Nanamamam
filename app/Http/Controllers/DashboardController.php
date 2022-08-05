@@ -21,25 +21,29 @@ class DashboardController extends Controller
     {
         // logic untuk menampilkan data transaksi yg masuk
 
-        $transactions = TransactionDetail::with(['transaction.user','product.galleries'])
-                        ->whereHas('transaction', function($transaction){
-                            $transaction->where('users_id', Auth::user()->id);
+        $transactions = Transaction::with(['transactiondetail','user'])
+                        ->where('users_id', Auth::user()->id)->get();
 
-                        });
 
-        $customer = User::count();
+        // $transactions = TransactionDetail::with(['transaction.user','product.galleries'])
+        //                 ->whereHas('transaction', function($transaction){
+        //                     $transaction->where('users_id', Auth::user()->id);
 
-        $revenue = $transactions->get()->reduce(function ($carry, $item){
-            return $carry + $item->price;
-        });
+        //                 });
+
+        // $customer = User::count();
+
+        // $revenue = $transactions->get()->reduce(function ($carry, $item){
+        //     return $carry + $item->price;
+        // });
 
 
 
 
         return view('pages.dashboard',[
-            'transaction_data' => $transactions->get(),
-            'customer'=> $customer,
-            'revenue'=> $revenue
+            'transaction_data' => $transactions
+            // 'customer'=> $customer,
+            // 'revenue'=> $revenue
 
         ]);
 

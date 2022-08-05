@@ -38,24 +38,26 @@
                             </div>
                         </a> --}}
 
-                        <div class="card card-list d-block"
+                        <a
+                            class="card card-list d-block"
+                            href="{{ route('dashboard-transaction-details', $transaction->id) }}"
                         >
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-1">
+                                    {{-- <div class="col-md-1">
                                     <img src="{{Storage::url($transaction->product->galleries->first()->photos ?? '')}}" class="w-50" />
-                                    </div>
-                                    <div class="col-md-4">{{ $transaction->product->name ?? '' }}</div>
+                                    </div> --}}
+                                    <div class="col-md-4">Rp. {{ number_format($transaction->total_price ?? '' )}}</div>
                                     <div class="col-md-6">{{ $transaction->created_at ?? '' }}</div>
-                                    <div class="col-md-1 d-none d-md-block">
-                                        <a href="{{ route('dashboard-transaction-details', $transaction->id) }}">
+                                    <div class="col-md-2 d-none d-md-block">
+
                                             <img src="{{ asset('images/dashboard-panah.svg') }}" alt=""/>
-                                        </a>
 
                                     </div>
                                 </div>
                             </div>
-                        </div>
+
+                        </a>
 
                     @endforeach
 

@@ -20,7 +20,8 @@ class TransactionDetail extends Model
         'products_id',
         'price',
         'shipping_status',
-        'code'
+        'code',
+        'portions'
 
 
     ];

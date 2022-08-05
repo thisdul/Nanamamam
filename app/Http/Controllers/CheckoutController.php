@@ -32,7 +32,6 @@ class CheckoutController extends Controller
                     ->get();
 
         // Transaction create
-
         $transaction = Transaction::create([
 
             'users_id' => Auth::user()->id,
@@ -59,6 +58,7 @@ class CheckoutController extends Controller
                 'transactions_id' => $transaction->id,
                 'products_id' => $cart->product->id,
                 'price' => $cart->product->price,
+                'portions' => $cart-> portion,
                 'shipping_status' => 'PENDING',
                 'code' => $trx
 
@@ -155,13 +155,13 @@ class CheckoutController extends Controller
                 if($fraud == 'challenge'){
                     $transaction->status = 'PENDING';
                 }else{
-                    $transaction->status =  'SUCCESS';
+                    $transaction->status =  'SHIPPING';
                 }
             }
         }
 
         elseif($status == 'settlement'){
-            $transaction->transaction_status = 'SUCCESS';
+            $transaction->transaction_status = 'SHIPPING';
         }
         elseif($status == 'pending'){
             $transaction->transaction_status = 'PENDING';

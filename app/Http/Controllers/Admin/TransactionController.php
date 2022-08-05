@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
@@ -22,36 +23,51 @@ class TransactionController extends Controller
     {
         if(request()->ajax())
         {
-            $query = Transaction::with(['user']);
+            // $query = Transaction::with(['user', 'transactiondetail']);
+            // $query = Transaction::with(['transactiondetail']);
+            $query = Transaction::with('transactiondetail', 'user');
+
+            // return $this->dataTable
+
+
 
             return DataTables::of($query)
                 ->addColumn('action', function($item){
-                    return '
+                    // return $item->transactiondetail->map(function($transaction_details){
 
-                        <div class="btn-group">
-                            <div class="dropdown">
-                                <button class=" btn btn-primary dropdown-toggle mr-1 mb-1
-                                        type="button"
-                                        data-toggle="dropdown">
-                                        Aksi
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="' . route('transaction.edit', $item->id). '">
-                                        Sunting
-                                    </a>
-                                    <form action="'. route('transaction.destroy', $item->id) .'" method="POST">
-                                        ' . method_field('delete') . csrf_field() .'
-                                        <button type="submit" class="dropdown-item text-danger">
-                                            Hapus
-                                        </button>
-                                    </form>
+                        return
+                        '
+                            <div class="btn-group">
+                                <div class="dropdown">
+                                    <button class=" btn btn-primary dropdown-toggle mr-1 mb-1
+                                            type="button"
+                                            data-toggle="dropdown">
+                                            Aksi
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="' . route('transaction.edit', $item->id). '">
+                                            Sunting
+                                        </a>
+                                        <a class="dropdown-item" href="' . route('transaction.show', $item->id). '">
+                                            Show
+                                        </a>
+                                        <form action="'. route('transaction.destroy', $item->id) .'" method="POST">
+                                            ' . method_field('delete') . csrf_field() .'
+                                            <button type="submit" class="dropdown-item text-danger">
+                                                Hapus
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ';
+                        ';
+
+
+                    // });
                 })
                 ->rawColumns(['action'])
-                ->make();
+                ->make(true);
+
         }
         return view('pages.admin.transaction.index');
     }
@@ -97,12 +113,14 @@ class TransactionController extends Controller
      */
     public function show($id)
     {
-        $transaction = Transaction::findOrFail($id);
-        // $item = TransactionDetail::findOrFail($id);
-        $user = User::findOrFail($transaction->user_id);
+        // $query = Transaction::with('transactiondetail, user');
+        $transaction = TransactionDetail::with(['transaction.user','product.galleries'])
+                     ->where('transactions_id', $id)->get();
 
+        return view('pages.admin.transaction.show', [
+            'transaction' => $transaction
+        ]);
 
-        return view('pages.admin.transaction.show', compact('transaction','user'));
 
     }
 
