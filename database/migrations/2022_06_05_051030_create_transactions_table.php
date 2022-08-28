@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('users_id');
             // Hapus
             $table->string('shipping_method');
+            // hapus
             $table->integer('delivery_fee');
             // Hapus
             $table->integer('total_product');

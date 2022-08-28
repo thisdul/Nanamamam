@@ -38,12 +38,9 @@ class DashboardController extends Controller
         // });
 
 
-
-
         return view('pages.dashboard',[
             'transaction_data' => $transactions
-            // 'customer'=> $customer,
-            // 'revenue'=> $revenue
+
 
         ]);
 

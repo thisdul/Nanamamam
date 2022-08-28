@@ -36,7 +36,7 @@ class CheckoutController extends Controller
 
             'users_id' => Auth::user()->id,
             'shipping_date' => $request->shipping_date,
-            'delivery_fee' => 25000,
+            // 'delivery_fee' => 25000,
             // 'shipping_method' => 'ANTAR',
             'total_price' => $request->total_price,
             // Hapus !!!

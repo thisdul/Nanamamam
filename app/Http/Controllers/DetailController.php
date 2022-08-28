@@ -22,7 +22,6 @@ class DetailController extends Controller
         return view('pages.detail',[
             'product' => $product
         ]);
-
     }
 
     public function add(Request $request, $id)

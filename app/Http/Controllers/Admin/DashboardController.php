@@ -15,39 +15,19 @@ class DashboardController extends Controller
     public function index()
     {
 
-        $transactions = TransactionDetail::with(['transaction.user','product.galleries'])
-                        ->whereHas('product', function($product){
 
-                        });
 
         $customer = User::count();
 
-        $revenue = $transactions->get()->reduce(function ($carry, $item){
-            return $carry + $item->price;
-        });
+        $revenue = Transaction::where('transaction_status', 'SUCCESS')->sum('total_price');
+
 
         return view('pages.admin.dashboard',[
-            'transaction_data' => $transactions->get(),
             'customer'=> $customer,
             'revenue'=> $revenue
 
         ]);
 
-    //     $transactions = TransactionDetail::with(['transaction.user','product.galleries'])
-    //                     ->whereHas('product', function($product){
-    //                         $product->where('users_id', Auth::user()->id);
 
-    //                     });
-
-    //     $customer = User::count();
-
-    //     $revenue = $transactions->get()->reduce(function ($carry, $item){
-    //         return $carry + $item->price;
-    //     });
-
-    //     return view('pages.admin.dashboard',[
-    //         'customer'=> $customer,
-    //         'revenue'=> $revenue,
-    //     ]);
     }
 }
